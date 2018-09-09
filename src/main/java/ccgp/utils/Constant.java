@@ -51,7 +51,7 @@ public class Constant {
 	};
 	public static String[] hebei={
 			"http://www.ccgp-hebei.gov.cn/province/cggg/zbgg/",//招标公告
-			"http://www.ccgp-hebei.gov.cn/province/cggg/zhbgg/",//中标公告
+			//"http://www.ccgp-hebei.gov.cn/province/cggg/zhbgg/",//中标公告
 			"http://www.ccgp-hebei.gov.cn/province/cggg/fbgg/",//废标公告
 			"http://www.ccgp-hebei.gov.cn/province/cggg/gzgg/",//更正公告
 	};

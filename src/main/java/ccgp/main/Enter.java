@@ -8,7 +8,11 @@ public class Enter {
 			ZYcaiGou zycaigou = new ZYcaiGou();
 			zycaigou.ZycaiGou(urlList[i]);
 		}
-
+		String[] urlListhebei=Constant.hebei;
+		for (int i = 0; i < urlListhebei.length; i++) {
+			Hebei hebei=new Hebei();
+			hebei.Hebei1(urlListhebei[i]);
+		}
 		Beijing beijing = new Beijing();
 		beijing.beiJing();
 		Hubei huBei = new Hubei();

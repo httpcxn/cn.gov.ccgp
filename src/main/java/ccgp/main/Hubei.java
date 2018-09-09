@@ -18,7 +18,7 @@ import ccgp.domain.Ccgp;
 import ccgp.utils.Constant;
 
 public class Hubei {
-	public Logger logger = LogManager.getLogger(Beijing.class.getName());
+	public Logger logger = LogManager.getLogger(Hubei.class.getName());
 
 	public void huBei() {
 		logger.debug("开始处理 湖北");

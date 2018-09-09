@@ -1,6 +1,4 @@
 package ccgp.main;
-
-
 import ccgp.dao.HebeiDao;
 import ccgp.domain.Ccgp;
 import org.apache.logging.log4j.LogManager;
@@ -9,11 +7,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
 public class Hebei {
     private String str ="";
     private String status = "";//信息的分类
@@ -24,8 +20,6 @@ public class Hebei {
     private String  people="";
     private String  href="";
     private Logger logger = LogManager.getLogger(Hebei.class.getName());
-
-
     public void Hebei1(String oldurl){
         logger.debug("开始处理:"+oldurl);
         str=oldurl+"index_";
@@ -56,19 +50,19 @@ public class Hebei {
             }
             try {
                 Document document = Jsoup.connect(url).timeout(30000).get();
-                Element u = document.getElementsByClass("a3").get(3);
-                Element ul = document.getElementsByClass("txt").get(0);
-                Element u2 = document.getElementsByClass("txt").get(1);
-                Element u3 = document.getElementsByClass("txt").get(2);
+                Element u = document.getElementsByClass("a3").get(3);//获取招标公告的title
+                Element ul = document.getElementsByClass("txt").get(0);//
+                Element u2 = document.getElementsByClass("txt").get(1);//获取招标公告的地址
+                Element u3 = document.getElementsByClass("txt").get(2);//获取采购单位的信息
                 //Elements elements1 = document.select("table").select("tr");
                 try {
                     //Elements lis = ul.children();
-                    title = u.text();
+                     title = u.text();
                      time = ul.text();
                      area = u2.text();
                      people = u3.text();
-                     href=u.attr("abs:href");
-                    System.out.println(title+time + area + people+href);
+                     href=u.attr("abs:href");//采购网址的获取
+                    System.out.println(title+time + area + people+href);//cxn添加的
 /*
                     for (Element li : lis) {
                         String title = li.child(0).text();
@@ -76,7 +70,6 @@ public class Hebei {
                         String time = li.child(1).text();
                         String area = li.child(2).text();
                         String people = li.child(3).text();
-
                         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                         Date time1 = format.parse(time);
                         if (time1.before(maxTime) || time1.equals(maxTime)) {
@@ -91,16 +84,14 @@ public class Hebei {
                    // SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                    // Date time1= format.parse(time);
                     Ccgp cc = new Ccgp();
-                     cc.setTitle(title);
+                    cc.setTitle(title);
                     cc.setArea(area);
                     cc.setPeople(people);
                     //cc.setTime(time1);
                     cc.setStatus(status);
                     cc.setHref(href);
-
                     logger.info(cc.toString());
                     list.add(cc);
-
                 } catch (Exception e) {
                     logger.error(e.getMessage());
                 }
